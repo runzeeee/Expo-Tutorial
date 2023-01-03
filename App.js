@@ -7,12 +7,14 @@ import Button from './components/Button';
 import * as ImagePicker from 'expo-image-picker';
 import CircleButton from './components/CircleButton';
 import IconButton from './components/IconButton';
+import EmojiPicker from './components/EmojiPicker';
 
 const PlaceholderImage = require('./assets/background-image.png');
 
 export default function App() {
 const [selectedImage, setSelectedImage] = useState(null);
 const [showAppOptions, setShowAppOptions] = useState(false);
+const [isModalVisible, setIsModalVisible] = useState(false);
 
   const pickImageAsync = async () =>{
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -32,7 +34,11 @@ const [showAppOptions, setShowAppOptions] = useState(false);
   };
 
   const onAddSticker = () => {
+    setIsModalVisible(true);
+  };
 
+  const onModalClose = () => {
+    setIsModalVisible(false);
   };
 
   const onSaveImageAsync = async() => {
@@ -61,6 +67,9 @@ const [showAppOptions, setShowAppOptions] = useState(false);
           <Button label="Use this photo" onPress={() => setShowAppOptions(true)} />
         </View>
       )}
+      <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
+        {/* A list of emoji component will go here */}
+      </EmojiPicker>
       <StatusBar style="auto" />
     </View>
   );
