@@ -25,45 +25,47 @@ const [showAppOptions, setShowAppOptions] = useState(false);
     }else{
       alert('You did not select any image.');
     }
+  };
 
-    const onReset = () => {
-      setShowAppOptions(false);
-    };
+  const onReset = () => {
+    setShowAppOptions(false);
+  };
 
-    const onAddSticker = () => {
+  const onAddSticker = () => {
 
-    };
+  };
 
-    const onSaveImageAsync = async() => {
+  const onSaveImageAsync = async() => {
 
-    };
+  };
 
-    return (
-      <View style={styles.container}>
-        <View style={styles.imageContener}>
-          <ImageViewer 
-            placeholderImageSource={PlaceholderImage}
-            selectedImage = {selectedImage}
-          />
-        </View>
-        {showAppOptions ? (
-          <View style={styles.optionsContainer}>
-            <View style={styles.optionsRow}>
-              <IconButton icon="refresh" label="Reset" onPress={onReset} />
-              <CircleButton onPress={onAddSticker} />
-              <IconButton icon="save-alt" label="Save" onPress={onSaveImageAsync} />
-            </View>
-          </View>
-        ) : (
-          <View style={styles.footerContainer}>
-            <Button theme={"primary"} label={"Choose a photo"} onPress={pickImageAsync} />
-            <Button label="Use this photo" onPress={() => setShowAppOptions(true)} />
-          </View>
-        )}
-        <StatusBar style="auto" />
+  return (
+    <View style={styles.container}>
+      <View style={styles.imageContener}>
+        <ImageViewer 
+          placeholderImageSource={PlaceholderImage}
+          selectedImage = {selectedImage}
+        />
       </View>
-    );
-  }
+      {showAppOptions ? (
+        <View style={styles.optionsContainer}>
+          <View style={styles.optionsRow}>
+            <IconButton icon="refresh" label="Reset" onPress={onReset} />
+            <CircleButton onPress={onAddSticker} />
+            <IconButton icon="save-alt" label="Save" onPress={onSaveImageAsync} />
+          </View>
+        </View>
+      ) : (
+        <View style={styles.footerContainer}>
+          <Button theme={"primary"} label={"Choose a photo"} onPress={pickImageAsync} />
+          <Button label="Use this photo" onPress={() => setShowAppOptions(true)} />
+        </View>
+      )}
+      <StatusBar style="auto" />
+    </View>
+  );
+}
+
 
 const styles = StyleSheet.create({
   container: {
@@ -93,5 +95,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
 
-});
-}
+})
+
